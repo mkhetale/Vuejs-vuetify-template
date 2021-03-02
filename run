@@ -1,0 +1,10 @@
+#!/bin/bash
+
+. ./VERSION
+
+SOURCE=$(pwd)/src
+docker rm projectname
+docker run -it --name="projectname" -v "$SOURCE":/home/code -p 8080:80 projectname:${VERSION}
+
+# docker run -it -p 6633:6633 --entrypoint "/bin/bash" dda:${VERSION}
+#docker run -it -p 6633:6633 -p 8080:8080 --entrypoint "/bin/bash" -v $ANSIBLE_HOME/playbooks/roles/communication/reminders/sgs-app/templates/config/config.json:/home/code/sms-gw/config.json:ro dda:1.0
